@@ -13,7 +13,7 @@ import web.service.UserService;
 import java.util.List;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping(value = "pages")
 public class UserController {
     @Autowired
     private UserService userService;
@@ -22,24 +22,7 @@ public class UserController {
     public String showAllUsers(Model model) {
         List<User> allusers = userService.showAllUsers();
         model.addAttribute("allUs", allusers);
-        return "/index";
-    }
-
-    @PostMapping("/index")
-    public String addNewUser(@ModelAttribute User user, Model model) {
-        model.addAttribute("user", user);
-        userService.addUser(user);
-        return "/index";
-    }
-    @PostMapping("/index")
-    public String deleteUser(@ModelAttribute User user, Model model) {
-        userService.deleteUser(user.getId());
-        return "redirect:/index";
-    }
-    @PostMapping("/index")
-    public String updateUser(@ModelAttribute User user, Model model) {
-        userService.updateUser(user);
-        return "/index";
+        return "/test";
     }
 }
 
